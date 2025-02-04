@@ -76,7 +76,7 @@ function App() {
   });
   const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [paletteName, setPaletteName] = useState('');
-  const [schemeSettings, setSchemeSettings] = useState<ColorSchemeSettings>({
+  const [schemeSettings, setSchemeSettings] = useState<any>({
     colorSpace: 'lch',
     baseHue: Math.floor(Math.random() * 360),
     hueRange: 30,

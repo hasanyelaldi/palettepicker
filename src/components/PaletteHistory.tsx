@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface SavedPalette {
   id: string;
   name: string;

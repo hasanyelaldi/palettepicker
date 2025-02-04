@@ -1,7 +1,7 @@
 import { ColorGenerator } from './colorGenerator';
 
 // Convert HSL to RGB
-const hslToRgb = (h: number, s: number, l: number): string => {
+export const hslToRgb = (h: number, s: number, l: number): string => {
   h /= 360;
   s /= 100;
   l /= 100;
