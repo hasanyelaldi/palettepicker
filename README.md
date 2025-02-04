@@ -1,50 +1,66 @@
-# React + TypeScript + Vite
+# PalettePicker - Color Scheme Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PalettePicker is a powerful color scheme generation tool designed to help designers, developers, and enthusiasts create beautiful, coherent color palettes with ease. Built with advanced color theory algorithms, it provides tools for checking color accessibility, learning about color psychology, and applying colors in real-world applications.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dynamic Color Generation**: Generate color schemes based on advanced perceptual models like LCh and LAB.
+- **Editable Palettes**: Fine-tune colors using interactive tools and see changes in real-time.
+- **Accessibility Tools**: Check and adjust your palettes to ensure they are accessible to people with color vision deficiencies.
+- **Template Previews**: Apply your schemes to various templates to preview how they look in different contexts.
 
-## Expanding the ESLint configuration
+TODO:
+- **Community Interaction**: Save, share, and explore palettes created by the community.
+- **API Access**: Utilize our RESTful API to integrate PalettePicker color schemes into your own projects.
+- **Import and Analysis**: Import existing color schemes or design files for analysis and enhancement.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org) (version 12 or higher recommended)
+- [npm](https://www.npmjs.com/get-npm) (usually included with Node.js)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/palettepicker.git
+   cd palettepicker
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. Install the required packages:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+
+
+## Usage
+To use PalettePicker, start by generating a random palette or inputting your base colors. Use the tools provided to adjust the colors as needed. Check the accessibility options to ensure your palette is usable by everyone.
+
+## Contributing
+Contributions are what make the open-source community such a fantastic place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+
+```bash
+1.Fork the Project
+2.Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3.Commit your Changes (git commit -m 'Add some AmazingFeature')
+4.Push to the Branch (git push origin feature/AmazingFeature)
+5.Open a Pull Request
+ ```
+
+## Reporting Issues
+Feel free to file any issues or bugs through the Issues tab in our GitHub repository. Please include as many details as possible in your report.
+
+## Contact
+Hasan Yelaldı - hasanyelaldi9@gmail.com
+
+Project Link: https://github.com/hasanyelaldi/palettepicker
+
