@@ -7,6 +7,10 @@ import { ColorSchemeSettings } from './components/ColorSchemeSettings'
 import { ColorGenerator } from './utils/colorGenerator'
 import { AccessibilityChecker } from './components/AccessibilityChecker'
 import './App.css'
+import { ThemeProvider, useTheme } from './context/ThemeContext'
+import './styles/theme.css'
+import './styles/components.css'
+import { Header } from './components/Header'
 
 interface SavedPalette {
   id: string;
@@ -63,7 +67,8 @@ const harmonyOptions: HarmonyOption[] = [
   }
 ];
 
-function App() {
+function AppContent() {
+  const { theme } = useTheme();
   // State for storing the current color palette
   const [colors, setColors] = useState<string[]>([]);
   const [harmonyType, setHarmonyType] = useState<HarmonyType>('complementary');
@@ -149,187 +154,180 @@ function App() {
   }, [schemeSettings]);
 
   return (
-    <>
-      <header className="app-header">
-        <div className="logo-container">
-          <div className="logo">
-            <div className="logo-circles">
-              <span className="circle c1"></span>
-              <span className="circle c2"></span>
-              <span className="circle c3"></span>
-              <span className="circle c4"></span>
-              <span className="circle c5"></span>
-            </div>
-          </div>
-          <div className="title-container">
-            <h1>PalettePicker</h1>
-            <p className="subtitle">Craft Your Perfect Color Scheme</p>
-          </div>
-        </div>
-      </header>
-      
-      <div className="tab-controls">
-        <button 
-          className={activeTab === 'harmony' ? 'active' : ''}
-          onClick={() => setActiveTab('harmony')}
-        >
-          Color Harmony
-        </button>
-        <button 
-          className={activeTab === 'image' ? 'active' : ''}
-          onClick={() => setActiveTab('image')}
-        >
-          Extract from Image
-        </button>
-        <button 
-          className={activeTab === 'edit' ? 'active' : ''}
-          onClick={() => setActiveTab('edit')}
-        >
-          Edit Colors
-        </button>
-        {savedPalettes.length > 0 && (
+    <div className="App" data-theme={theme}>
+      <Header />
+      <main className="main-content">
+        <div className="tab-controls">
           <button 
-            className={activeTab === 'history' ? 'active' : ''}
-            onClick={() => setActiveTab('history')}
+            className={activeTab === 'harmony' ? 'active' : ''}
+            onClick={() => setActiveTab('harmony')}
           >
-            History
+            Color Harmony
           </button>
-        )}
-      </div>
-
-      {activeTab === 'harmony' && (
-        <>
-          <div className="harmony-controls">
-            <div className="harmony-options">
-              {harmonyOptions.map((option) => (
-                <label 
-                  key={option.value}
-                  className={`harmony-option ${harmonyType === option.value ? 'active' : ''}`}
-                >
-                  <input
-                    type="radio"
-                    name="harmonyType"
-                    value={option.value}
-                    checked={harmonyType === option.value}
-                    onChange={(e) => setHarmonyType(e.target.value as HarmonyType)}
-                  />
-                  <div className="option-content">
-                    <span className="option-icon">{option.icon}</span>
-                    <div className="option-text">
-                      <span className="option-label">{option.label}</span>
-                      <span className="option-description">{option.description}</span>
-                    </div>
-                  </div>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <ColorSchemeSettings
-            settings={schemeSettings}
-            onSettingsChange={setSchemeSettings}
-          />
-        </>
-      )}
-
-      {activeTab === 'image' && (
-        <ImageUpload onPaletteGenerated={setColors} />
-      )}
-
-      <div className="palette-container">
-        {colors.map((color, index) => (
-          <div
-            key={index}
-            className={`color-block ${copying === index ? 'copied' : ''} ${selectedColor === index ? 'selected' : ''}`}
-            style={{ 
-              backgroundColor: color,
-              '--index': index
-            } as React.CSSProperties}
-            onClick={() => handleColorClick(index)}
+          <button 
+            className={activeTab === 'image' ? 'active' : ''}
+            onClick={() => setActiveTab('image')}
           >
-            <div className="color-info">
-              <span>{color}</span>
-              <div className="color-actions">
-                <small>{activeTab === 'edit' ? 'Click to edit' : 'Click to copy'}</small>
+            Extract from Image
+          </button>
+          <button 
+            className={activeTab === 'edit' ? 'active' : ''}
+            onClick={() => setActiveTab('edit')}
+          >
+            Edit Colors
+          </button>
+          {savedPalettes.length > 0 && (
+            <button 
+              className={activeTab === 'history' ? 'active' : ''}
+              onClick={() => setActiveTab('history')}
+            >
+              History
+            </button>
+          )}
+        </div>
+
+        {activeTab === 'harmony' && (
+          <>
+            <div className="harmony-controls">
+              <div className="harmony-options">
+                {harmonyOptions.map((option) => (
+                  <label 
+                    key={option.value}
+                    className={`harmony-option ${harmonyType === option.value ? 'active' : ''}`}
+                  >
+                    <input
+                      type="radio"
+                      name="harmonyType"
+                      value={option.value}
+                      checked={harmonyType === option.value}
+                      onChange={(e) => setHarmonyType(e.target.value as HarmonyType)}
+                    />
+                    <div className="option-content">
+                      <span className="option-icon">{option.icon}</span>
+                      <div className="option-text">
+                        <span className="option-label">{option.label}</span>
+                        <span className="option-description">{option.description}</span>
+                      </div>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <ColorSchemeSettings
+              settings={schemeSettings}
+              onSettingsChange={setSchemeSettings}
+            />
+          </>
+        )}
+
+        {activeTab === 'image' && (
+          <ImageUpload onPaletteGenerated={setColors} />
+        )}
+
+        <div className="palette-container">
+          {colors.map((color, index) => (
+            <div
+              key={index}
+              className={`color-block ${copying === index ? 'copied' : ''} ${selectedColor === index ? 'selected' : ''}`}
+              style={{ 
+                backgroundColor: color,
+                '--index': index
+              } as React.CSSProperties}
+              onClick={() => handleColorClick(index)}
+            >
+              <div className="color-info">
+                <span>{color}</span>
+                <div className="color-actions">
+                  <small>{activeTab === 'edit' ? 'Click to edit' : 'Click to copy'}</small>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {activeTab === 'edit' && selectedColor !== null && (
+          <div className="editor-overlay" onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setSelectedColor(null);
+            }
+          }}>
+            <ColorEditor
+              color={colors[selectedColor]}
+              onColorChange={handleColorChange}
+              onClose={() => setSelectedColor(null)}
+            />
+          </div>
+        )}
+
+        {activeTab === 'history' && (
+          <PaletteHistory
+            savedPalettes={savedPalettes}
+            onPaletteSelect={setColors}
+            onPaletteDelete={handleDeletePalette}
+          />
+        )}
+
+        <div className="controls">
+          {activeTab === 'harmony' && (
+            <button 
+              className="generate-button"
+              onClick={generateNewPalette}
+            >
+              Generate New Palette
+            </button>
+          )}
+          <button 
+            className="save-button"
+            onClick={() => setShowSaveDialog(true)}
+          >
+            Save Palette
+          </button>
+        </div>
+
+        {/* Add back the AccessibilityChecker */}
+        {colors.length > 0 && (
+          <AccessibilityChecker colors={colors} />
+        )}
+
+        {/* Save Dialog */}
+        {showSaveDialog && (
+          <div className="save-dialog-overlay">
+            <div className="save-dialog">
+              <h3>Save Palette</h3>
+              <input
+                type="text"
+                placeholder="Enter palette name"
+                value={paletteName}
+                onChange={(e) => setPaletteName(e.target.value)}
+                autoFocus
+              />
+              <div className="dialog-buttons">
+                <button onClick={handleSavePalette}>Save</button>
+                <button 
+                  className="cancel-button"
+                  onClick={() => {
+                    setShowSaveDialog(false);
+                    setPaletteName('');
+                  }}
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-
-      {activeTab === 'edit' && selectedColor !== null && (
-        <div className="editor-overlay" onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            setSelectedColor(null);
-          }
-        }}>
-          <ColorEditor
-            color={colors[selectedColor]}
-            onColorChange={handleColorChange}
-            onClose={() => setSelectedColor(null)}
-          />
-        </div>
-      )}
-
-      {activeTab === 'history' && (
-        <PaletteHistory
-          savedPalettes={savedPalettes}
-          onPaletteSelect={setColors}
-          onPaletteDelete={handleDeletePalette}
-        />
-      )}
-
-      <div className="controls">
-        {activeTab === 'harmony' && (
-          <button 
-            className="generate-button"
-            onClick={generateNewPalette}
-          >
-            Generate New Palette
-          </button>
         )}
-        <button 
-          className="save-button"
-          onClick={() => setShowSaveDialog(true)}
-        >
-          Save Palette
-        </button>
-      </div>
-
-      {/* Add back the AccessibilityChecker */}
-      {colors.length > 0 && (
-        <AccessibilityChecker colors={colors} />
-      )}
-
-      {/* Save Dialog */}
-      {showSaveDialog && (
-        <div className="save-dialog-overlay">
-          <div className="save-dialog">
-            <h3>Save Palette</h3>
-            <input
-              type="text"
-              placeholder="Enter palette name"
-              value={paletteName}
-              onChange={(e) => setPaletteName(e.target.value)}
-              autoFocus
-            />
-            <div className="dialog-buttons">
-              <button onClick={handleSavePalette}>Save</button>
-              <button 
-                className="cancel-button"
-                onClick={() => {
-                  setShowSaveDialog(false);
-                  setPaletteName('');
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+      </main>
+    </div>
   )
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
 }
 
 export default App

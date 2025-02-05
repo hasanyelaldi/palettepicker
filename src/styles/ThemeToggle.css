@@ -1,0 +1,29 @@
+.theme-toggle {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-duration) ease;
+  margin: 0 auto;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.theme-toggle .icon {
+  font-size: 14px;
+}
+
+.theme-toggle .text {
+  color: var(--text-primary);
+}
