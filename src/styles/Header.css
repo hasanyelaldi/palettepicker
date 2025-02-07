@@ -1,0 +1,116 @@
+.header {
+  background-color: var(--header-background);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  color: var(--text-primary);
+}
+
+.logo-ring {
+  opacity: 0.2;
+}
+
+.logo-palette {
+  animation: rotatePalette 12s linear infinite;
+  transform-origin: center;
+}
+
+.title-group {
+  margin-left: 1rem;
+}
+
+.title-group h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes rotatePalette {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add these variables to your theme.css */
+[data-theme='light'] {
+  --logo-accent-1: #f59e0b;
+  --logo-accent-2: #10b981;
+  --logo-accent-3: #ec4899;
+}
+
+[data-theme='dark'] {
+  --logo-accent-1: #fbbf24;
+  --logo-accent-2: #34d399;
+  --logo-accent-3: #f472b6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 1rem;
+  }
+
+  .title-group h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-group h1 {
+    font-size: 1.25rem;
+  }
+
+  .logo-section {
+    gap: 0.75rem;
+  }
+} 
+} 
