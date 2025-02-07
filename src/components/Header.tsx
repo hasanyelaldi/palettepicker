@@ -1,4 +1,3 @@
-import { useTheme } from '../context/ThemeContext';
 import { ThemeToggle } from './ThemeToggle';
 import '../styles/Header.css';
 
