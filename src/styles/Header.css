@@ -1,11 +1,13 @@
 .header {
-  background-color: var(--card-background);
+  background-color: var(--header-background);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--card-border);
-  padding: 1.5rem 0;
+  padding: 1.25rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header-content {
@@ -19,76 +21,67 @@
 
 .logo-section {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 1rem;
 }
 
-.logo-section h1 {
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  color: var(--text-primary);
+}
+
+.logo-ring {
+  opacity: 0.2;
+}
+
+.logo-palette {
+  animation: rotatePalette 12s linear infinite;
+  transform-origin: center;
+}
+
+.title-group {
+  margin-left: 1rem;
+}
+
+.title-group h1 {
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin: 0;
+  font-weight: 500;
 }
 
-/* Logo Animation */
-.logo-svg {
-  color: var(--primary-color);
-}
-
-.logo-ring {
-  transform-origin: center;
-  animation: smoothRotate 12s linear infinite;
-}
-
-.logo-center {
-  animation: pulse 3s ease-in-out infinite;
-}
-
-.logo-accent {
-  animation: accentPulse 3s ease-in-out infinite;
-}
-
-@keyframes smoothRotate {
-  from {
+@keyframes rotatePalette {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
+/* Add these variables to your theme.css */
+[data-theme='light'] {
+  --logo-accent-1: #f59e0b;
+  --logo-accent-2: #10b981;
+  --logo-accent-3: #ec4899;
 }
 
-@keyframes accentPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.6;
-  }
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+[data-theme='dark'] {
+  --logo-accent-1: #fbbf24;
+  --logo-accent-2: #34d399;
+  --logo-accent-3: #f472b6;
 }
 
 /* Responsive adjustments */
@@ -97,8 +90,27 @@
     padding: 0 1rem;
   }
 
-  .logo-section h1 {
+  .title-group h1 {
     font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-group h1 {
+    font-size: 1.25rem;
+  }
+
+  .logo-section {
+    gap: 0.75rem;
   }
 } 
 } 

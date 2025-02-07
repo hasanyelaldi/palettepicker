@@ -31,7 +31,6 @@ h1 {
   gap: 1.5rem;
   margin: 2rem 0;
   padding: 2rem;
-  background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   flex-wrap: wrap;
@@ -117,7 +116,6 @@ h1 {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 2rem;
-  background: var(--card-bg);
   border-radius: 16px;
 }
 
@@ -329,7 +327,6 @@ button:active {
 
 .tab-controls button {
   min-width: 150px;
-  background: var(--card-bg);
   border: 1px solid #404040;
   position: relative;
   overflow: hidden;
@@ -372,7 +369,6 @@ button:active {
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: var(--card-bg);
   position: relative;
   overflow: hidden;
 }
@@ -412,7 +408,6 @@ button:active {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  background: var(--card-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -559,7 +554,6 @@ button:active {
   max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
-  background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -611,7 +605,6 @@ button:active {
   flex: 1;
   height: 6px;
   -webkit-appearance: none;
-  background: var(--card-bg);
   border-radius: 3px;
   outline: none;
 }
@@ -676,7 +669,6 @@ button:active {
 }
 
 .saved-palette {
-  background: var(--card-bg);
   border-radius: 12px;
   padding: 1rem;
   display: flex;
@@ -749,7 +741,7 @@ button:active {
 }
 
 .save-dialog {
-  background: var(--card-bg);
+  background: var(--component-bg);
   padding: 2rem;
   border-radius: 12px;
   width: 90%;
@@ -841,7 +833,6 @@ button:active {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 1.5rem;
-  background: var(--card-bg);
   border-radius: 16px;
 }
 
@@ -892,7 +883,6 @@ button:active {
   padding: 0.6rem;
   border-radius: 8px;
   border: 1px solid #404040;
-  background: var(--primary-bg);
   color: var(--text-primary);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -984,7 +974,6 @@ input[type="range"]::-webkit-slider-runnable-track {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 2rem;
-  background: var(--card-bg);
   border-radius: 16px;
 }
 
@@ -1016,7 +1005,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   padding: 0.75rem;
   border-radius: 8px;
   transition: background-color 0.2s ease;
-  min-width: 200px;
+  min-width: 170px;
 }
 
 .simulation-item:hover {
@@ -1132,7 +1121,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .tooltip {
   position: fixed;
-  background: var(--card-bg);
+  background: var(--component-bg);
   border: 1px solid var(--accent);
   padding: 1rem;
   border-radius: 8px;
@@ -1193,7 +1182,6 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .accessibility-checker .tooltip {
-  background: var(--card-bg);
   border: 1px solid var(--accent);
   padding: 1rem;
   border-radius: 8px;
@@ -1229,7 +1217,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .color-editor {
-  background: var(--card-bg);
+  background: var(--component-bg);
   padding: 1.5rem;
   border-radius: 16px;
   width: 400px;

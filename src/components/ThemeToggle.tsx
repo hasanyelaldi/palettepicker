@@ -7,14 +7,11 @@ export function ThemeToggle() {
   return (
     <button 
       onClick={toggleTheme}
-      className="theme-toggle"
+      className={`theme-toggle ${theme}`}
       aria-label="Toggle theme"
     >
       <span className="icon">
         {theme === 'light' ? '🌙' : '☀️'}
-      </span>
-      <span className="text">
-        {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
       </span>
     </button>
   );

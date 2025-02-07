@@ -4,17 +4,23 @@
 
 [data-theme='light'] {
   /* Base colors */
-  --background-primary: #ffffff;
+  --background-primary: #f1f5f9;
   --background-secondary: #f8fafc;
   --text-primary: #1e293b;
   --text-secondary: #64748b;
   
   /* UI elements */
   --card-background: #ffffff;
+  --header-background: #ffffff;
   --card-border: #e2e8f0;
-  --input-background: #f8fafc;
+  --input-background: #ffffff;
   --input-border: #cbd5e0;
-  --button-background: #f1f5f9;
+  --button-background: #f8fafc;
+  
+  /* Component specific backgrounds */
+  --component-bg: #ffffff;         /* Changed to white */
+  --component-hover: #f8fafc;      /* Lighter hover state */
+  --component-active: #f1f5f9;     /* Slightly darker active state */
   
   /* Interactive elements */
   --primary-color: #3b82f6;
@@ -24,6 +30,11 @@
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  
+  /* Logo accents */
+  --logo-accent-1: #f59e0b;
+  --logo-accent-2: #10b981;
+  --logo-accent-3: #ec4899;
 }
 
 [data-theme='dark'] {
@@ -35,6 +46,7 @@
   
   /* UI elements */
   --card-background: #1e293b;
+  --header-background: #1e293b;
   --card-border: #334155;
   --input-background: #0f172a;
   --input-border: #334155;
@@ -48,6 +60,16 @@
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  /* Component specific backgrounds */
+  --component-bg: #1e293b;         /* Explicitly set for dark mode */
+  --component-hover: #2d3a4f;      /* Slightly lighter hover */
+  --component-active: #334155;     /* Even lighter active state */
+  
+  /* Logo accents */
+  --logo-accent-1: #fbbf24;
+  --logo-accent-2: #34d399;
+  --logo-accent-3: #f472b6;
 }
 
 body {

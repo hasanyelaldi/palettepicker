@@ -1,29 +1,97 @@
+.theme-toggle-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
 .theme-toggle {
-  background: var(--card-background);
+  background-color: var(--card-background);
   border: 1px solid var(--card-border);
-  border-radius: 20px;
-  padding: 6px 12px;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 500;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-duration) ease;
-  margin: 0 auto;
+  justify-content: center;
+  transition: all 0.2s ease;
+  min-width: 40px;  
 }
 
 .theme-toggle:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
   border-color: var(--primary-color);
+  transform: translateY(-1px);
 }
 
 .theme-toggle .icon {
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1;
 }
 
-.theme-toggle .text {
-  color: var(--text-primary);
+.toggle-track {
+  background: var(--background-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: all 0.2s ease;
+}
+
+.toggle-thumb {
+  position: absolute;
+  background: var(--primary-color);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  left: 3px;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle.light .toggle-thumb {
+  transform: translateX(16px);
+}
+
+.toggle-sun, .toggle-moon {
+  position: absolute;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  transition: all 0.2s ease;
+}
+
+.toggle-sun {
+  left: 3px;
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.toggle-moon {
+  right: 3px;
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.theme-toggle.light .toggle-sun {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.theme-toggle.dark .toggle-moon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sun-beams {
+  transform-origin: center center;
+  transition: all 0.3s ease;
 }
